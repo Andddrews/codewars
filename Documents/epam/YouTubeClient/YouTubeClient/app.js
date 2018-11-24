@@ -30,21 +30,28 @@ function requestXHR(url) {
   function handleRequest(items) {
   (items || []).forEach(item => {
   const el = document.createElement('div');
-  el.style.width = '140px';
-  el.style.height = '200px';
+  el.style.width = '200px';
+  el.style.height = '400px';
   el.style.border= '1px solid gray';
   el.className = 'item-container';
   
   const title = document.createElement('h2');
-  title.innerHTML = item.snippet.channelTitle;;
-  
+  title.innerHTML = item.snippet.channelTitle;
+   
   const body = document.createElement('div');
   body.style.width = '80%';
   body.style.height = '80%';
   body.innerHTML = `<div class='description'>${item.snippet.description}</div>`
   el.appendChild(title);
   el.appendChild(body);
-  
+
+
+  const publishedAt = document.createElement('div');
+  publishedAt.innerHTML = item.snippet.publishedAt;
+  publishedAt.className = 'publishedAt';
+  el.appendChild(publishedAt);
+
+
   search.appendChild(el);
   });
   }
